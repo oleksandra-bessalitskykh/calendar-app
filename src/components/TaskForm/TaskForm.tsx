@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { ITaskForm } from './TaskForm.types';
+import {ITaskForm} from './TaskForm.types';
 import {
     AddTextButtonComponent,
     TaskComponent,
@@ -11,11 +11,11 @@ import {FilterSelectComponent} from '../Filter/Filter.styles';
 const TaskForm: React.FC<ITaskForm> = React.memo(
     ({day, addTask, onClick, index, text, label, color}) => {
         const [selectedLabel, setSelectedLabel] = useState(label);
-        const [selectedColor, setSelectedColor] = useState(label);
+        const [selectedColor, setSelectedColor] = useState(color);
         const [inputText, setInputText] = useState(text);
 
         const taskHandler = () => {
-            addTask(day.format('DD/MM/YYYY'), {title: inputText, label: selectedLabel, color: selectedColor}, index);
+            addTask(day.format('YYYY-MM-DD'), {title: inputText, label: selectedLabel, color: selectedColor}, index);
             onClick();
         };
 
@@ -59,9 +59,9 @@ const TaskForm: React.FC<ITaskForm> = React.memo(
                         value={selectedColor}
                         onChange={e => setSelectedColor(e.target.value)}
                     >
-                        <option value="cornflowerblue">blue</option>
                         <option value="white">white</option>
                         <option value="red">red</option>
+                        <option value="yellow">yellow</option>
                     </FilterSelectComponent>
                 </div>
             </TaskComponent>

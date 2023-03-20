@@ -8,23 +8,23 @@ export const filterInitialState = {
 }
 
 export const tasksInitialState = {
-    '13/03/2023': [
-    {
-        title: 'task 1',
-        label: 'optional',
-        color: 'white',
-    },
-    {
-        title: 'task 2',
-        label: 'optional',
-        color: 'white',
-    }
-],
-    '17/03/2023': [
-    {
-        title: 'task 77',
-        label: 'important',
-        color: 'cornflowerblue',
-    }
-],
-}
+    '2023-03-25': [
+        {
+            title: 'task 1',
+            label: 'optional',
+            color: 'white',
+        },
+        {
+            title: 'task 2',
+            label: 'optional',
+            color: 'white',
+        }
+    ],
+    '2023-03-20': [
+        {
+            title: 'task 77',
+            label: 'important',
+            color: 'yellow',
+        }
+    ],
+};

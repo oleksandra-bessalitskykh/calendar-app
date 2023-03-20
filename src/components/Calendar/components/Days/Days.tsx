@@ -6,10 +6,12 @@ import {IDays, IFormData} from './Days.types';
 import {DaysComponent, RowComponent} from '../../Calendar.styles';
 import {DayComponent, CurrentDayComponent, CreateButtonComponent} from './Days.styles';
 import {DEFAULT_LABEL_VALUE, DEFAULT_COLOR_VALUE, DEFAULT_LIST_SIZE, CREATE_BUTTON_TITLE} from './Days.constants';
+import Holidays from "../../../Holidays/Holidays";
 
 const Days: React.FC<IDays> = React.memo(
-    ({getTasks, day, currentDate, addTask, filterState}) => {
-        const index = getTasks(day.format('DD/MM/YYYY')).length;
+    ({getTasks, day, currentDate, addTask, filterState, getHolidays}) => {
+        const index = getTasks(day.format('YYYY-MM-DD')).length;
+        const holidaysNumber = getHolidays(day.format('YYYY-MM-DD')).length;
         const formDataInitialState = {
             index,
             isVisible: false,
@@ -19,13 +21,13 @@ const Days: React.FC<IDays> = React.memo(
         };
         const [formData, setFormData] = useState<IFormData>(formDataInitialState);
 
-        const isBigCell = index >= DEFAULT_LIST_SIZE;
+        const maxHeight = index + holidaysNumber >= DEFAULT_LIST_SIZE;
 
         const isCurrentDay = (day: Moment) => moment().isSame(day, 'day');
         const isCurrentMonth = (month: Moment) => currentDate.isSame(month, 'month');
 
         return (
-            <DaysComponent isCurrentMonth={isCurrentMonth(day)} scrollable isBigCell={isBigCell}>
+            <DaysComponent isCurrentMonth={isCurrentMonth(day)} maxHeight={maxHeight}>
                 <RowComponent justifyContent={'flex-end'}>
                     <DayComponent>
                         {!isCurrentDay(day)
@@ -37,8 +39,13 @@ const Days: React.FC<IDays> = React.memo(
                             )}
                     </DayComponent>
                 </RowComponent>
-                <Tasks getTasks={getTasks} day={day} setFormData={(data: IFormData) => setFormData(data)}
-                       filterState={filterState}/>
+                <Holidays getHolidays={getHolidays} day={day}/>
+                <Tasks
+                    getTasks={getTasks}
+                    day={day}
+                    setFormData={(data: IFormData) => setFormData(data)}
+                    filterState={filterState}
+                />
                 {!formData.isVisible && (
                     <CreateButtonComponent
                         title={CREATE_BUTTON_TITLE}

@@ -26,7 +26,7 @@ export const TaskComponent = styled.div`
     padding: 0;
     align-self: flex-start;
   }
-  
+
   & .form-buttons {
     display: flex;
   }

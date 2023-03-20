@@ -1,11 +1,13 @@
 import { Moment } from 'moment';
+import {IFilterState, IGetTasks, IAddTask, IHoliday} from '../../Calendar.types';
 
 export interface IDays {
-    getTasks: (day: string) => any;
+    getTasks: IGetTasks;
     day: Moment;
     currentDate: Moment;
-    addTask: (day: string, inputText: string, index: number) => any;
-    filterState: any;
+    addTask: IAddTask;
+    filterState: IFilterState;
+    getHolidays: (day: string) => IHoliday[] | [];
 }
 
 export interface IFormData {

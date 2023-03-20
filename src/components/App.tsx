@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import moment from 'moment/moment';
-
 import Calendar from './Calendar/Calendar';
 import SubHeader from './SubHeader/SubHeader';
-import { AppComponent } from './App.styles';
+import {AppComponent} from './App.styles';
 
 function App() {
     moment.updateLocale('en', {week: {dow: 1}});

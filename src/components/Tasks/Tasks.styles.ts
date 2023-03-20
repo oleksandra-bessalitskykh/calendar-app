@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {ITaskTextComponent} from './Tasks.types';
 
 export const TasksComponent = styled.ul`
   list-style: none;
@@ -24,7 +25,7 @@ export const EditButtonComponent = styled.span`
   outline: unset;
 `;
 
-export const TaskTextComponent = styled.span`
+export const TaskTextComponent = styled.span<ITaskTextComponent>`
   display: inline-block;
   height: 24px;
   width: 100%;
@@ -38,5 +39,5 @@ export const TaskTextComponent = styled.span`
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  ${(props: any) => `background-color: ${props.color}`}
+  ${props => `background-color: ${props.color}`}
 `;

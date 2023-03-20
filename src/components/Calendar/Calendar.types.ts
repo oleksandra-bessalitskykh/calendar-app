@@ -1,5 +1,5 @@
-import { Moment } from 'moment';
-import { DropResult } from 'react-beautiful-dnd';
+import {Moment} from 'moment';
+import {DropResult} from 'react-beautiful-dnd';
 
 export interface ICalendar {
     startDay: Moment;
@@ -19,9 +19,33 @@ export interface ITask {
 }
 
 export interface ITasksList {
-    string: ITask[]
+    [key: string]: ITask[]
 }
 
-export type IAddTask = (date: string, task: any, index: number) => void;
+export interface IHoliday {
+    name: string;
+}
+
+export interface IHolidays {
+    [key: string]: IHoliday[];
+}
+
+export interface ICalendarComponent {
+    isHeader?: boolean;
+    scrollable?: boolean;
+}
+
+export interface IDaysComponent {
+    isHeader?: boolean;
+    maxHeight?: boolean;
+    isCurrentMonth?: boolean;
+}
+
+export interface IRowComponent {
+    isHeader?: boolean;
+    justifyContent?: string;
+}
+
+export type IAddTask = (date: string, task: ITask, index: number) => void;
 export type IGetTasks = (day: string) => ITask[] | [];
 export type IHandleOnDragEnd = ({destination, source}: DropResult) => void;

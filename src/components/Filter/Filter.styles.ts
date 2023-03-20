@@ -6,6 +6,7 @@ import {
     CloseButtonComponent,
     InputComponent
 } from '../TaskForm/TaskForm.styles';
+import {IFilterContainerComponent} from './Filter.types';
 
 export const FilterButtonComponent = styled(ButtonComponent)`
   width: 50px;
@@ -17,9 +18,9 @@ export const FilterButtonComponent = styled(ButtonComponent)`
   cursor: pointer
 `;
 
-export const FilterContainerComponent: any = styled(TaskComponent)`
+export const FilterContainerComponent = styled(TaskComponent)<IFilterContainerComponent>`
   position: absolute;
-  display: ${(props: any) => props.isFilterFormVisible ? 'flex' : 'none'};
+  display: ${props => props.isFilterFormVisible ? 'flex' : 'none'};
   justify-content: center;
   height: 250px;
 

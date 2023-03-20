@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { EditButtonComponent } from '../Tasks/Tasks.styles';
+import {EditButtonComponent} from '../Tasks/Tasks.styles';
 
-export const ToolBarComponent: any = styled.div`
+export const ToolBarComponent = styled.div`
   position: relative;
   display: flex;
-  padding: 0 16px;
+  margin-bottom: 5px;
   background-color: white;
 `;
 
@@ -24,11 +24,11 @@ export const ToolBarInputComponent = styled.div`
   font-size: 14px;
   color: #B176FE;
   text-align: center;
-  
+
   & label {
     cursor: pointer;
   }
-  
+
   & input {
     visibility: hidden;
   }
